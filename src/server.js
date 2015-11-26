@@ -1,6 +1,7 @@
 'use strict';
 import express from 'express';
 import path from 'path';
+import compression from 'compression';
 import favicon from 'serve-favicon';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
@@ -12,6 +13,7 @@ const app = express();
 app.set('views', path.join(__dirname, '..', 'src', 'views'));
 app.set('view engine', 'jade');
 
+app.use(compression());
 app.use(favicon(path.join(__dirname, '..', 'public', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
